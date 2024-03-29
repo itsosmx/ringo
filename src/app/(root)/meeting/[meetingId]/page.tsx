@@ -7,13 +7,13 @@ import React from "react";
 export default function CurrentMeeting({ params }: { params: { meetingId: string } }) {
   const { user, isLoaded } = useUser();
   const { call, isCallPending } = useCallById(params.meetingId);
-  const [isSettingUp, setIsSettingUp] = React.useState(true);
+  const [isSetupComplete, setIsSetupComplete] = React.useState(true);
 
   if (isCallPending || !isLoaded) return <Loader />;
   return (
     <section className="h-screen">
       <StreamCall call={call}>
-        <StreamTheme>{isSettingUp ? <MeetingSetup MeetingSetup={() => setIsSettingUp(true)} /> : <MeetingRoom />}</StreamTheme>
+        <StreamTheme>{isSetupComplete ? <MeetingSetup setIsSetupComplete={setIsSetupComplete} /> : <MeetingRoom />}</StreamTheme>
       </StreamCall>
     </section>
   );
