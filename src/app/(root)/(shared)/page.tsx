@@ -49,10 +49,10 @@ export default function Home() {
   return (
     <div>
       <section className="flex gap-4 justify-between">
-        <ShowButton onClick={createMeeting} icon={FaPlus} title="New Meeting" description="Start an instant meeting." />
-        <ShowButton icon={FaPlus} title="New Meeting" description="Start an instant meeting." />
-        <ShowButton icon={FaPlus} title="New Meeting" description="Start an instant meeting." />
-        <ShowButton icon={FaPlus} title="New Meeting" description="Start an instant meeting." />
+        <ShowButton onClick={createMeeting} icon={<FaPlus className="text-4xl" />} title="New Meeting" description="Start an instant meeting." />
+        <ShowButton icon={<FaPlus className="text-4xl" />} title="New Meeting" description="Start an instant meeting." />
+        <ShowButton icon={<FaPlus className="text-4xl" />} title="New Meeting" description="Start an instant meeting." />
+        <ShowButton icon={<FaPlus className="text-4xl" />} title="New Meeting" description="Start an instant meeting." />
       </section>
     </div>
   );

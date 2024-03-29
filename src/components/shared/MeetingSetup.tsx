@@ -1,6 +1,5 @@
-import { VideoPreview, useCall } from "@stream-io/video-react-sdk";
+import { DeviceSettings, VideoPreview, useCall } from "@stream-io/video-react-sdk";
 import React, { useEffect } from "react";
-import { Checkbox } from "@/components/ui/checkbox";
 import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
 import { BsFillCameraVideoFill, BsFillCameraVideoOffFill } from "react-icons/bs";
 import { Button } from "../ui/button";
@@ -13,13 +12,8 @@ export default function MeetingSetup({ setIsSetupComplete }: { setIsSetupComplet
   const call = useCall();
 
   useEffect(() => {
-    if (isVideoToggle) {
-      call?.camera.disable();
-      call?.microphone.disable();
-    } else {
-      call?.camera.enable();
-      call?.microphone.enable();
-    }
+    isVideoToggle.audio ? call?.microphone.disable() : call?.microphone.enable();
+    isVideoToggle.video ? call?.camera.disable() : call?.camera.enable();
   }, [isVideoToggle, call?.camera, call?.microphone]);
 
   function handleOnJoin() {
@@ -55,6 +49,7 @@ export default function MeetingSetup({ setIsSetupComplete }: { setIsSetupComplet
           {!isVideoToggle.video ? <BsFillCameraVideoFill /> : <BsFillCameraVideoOffFill className="text-red-600" />}
         </label>
         <Button onClick={handleOnJoin}>Join Meeting</Button>
+        <DeviceSettings />
       </div>
     </div>
   );
