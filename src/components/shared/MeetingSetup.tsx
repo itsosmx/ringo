@@ -3,8 +3,9 @@ import React, { useEffect } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
 import { BsFillCameraVideoFill, BsFillCameraVideoOffFill } from "react-icons/bs";
+import { Button } from "../ui/button";
 
-export default function MeetingSetup() {
+export default function MeetingSetup({ onCompleted }: { onCompleted: () => void }) {
   const [isVideoToggle, setIsVideoToggle] = React.useState(false);
   const call = useCall();
 
@@ -39,6 +40,7 @@ export default function MeetingSetup() {
           {!isVideoToggle ? <BsFillCameraVideoFill /> : <BsFillCameraVideoOffFill className="text-red-600" />}
         </label>
       </div>
+      <Button onClick={onCompleted}>Join Meeting</Button>
     </div>
   );
 }

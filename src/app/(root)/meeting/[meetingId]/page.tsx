@@ -13,7 +13,7 @@ export default function CurrentMeeting({ params }: { params: { meetingId: string
   return (
     <section className="h-screen">
       <StreamCall call={call}>
-        <StreamTheme>{isSettingUp ? <MeetingSetup /> : <MeetingRoom />}</StreamTheme>
+        <StreamTheme>{isSettingUp ? <MeetingSetup MeetingSetup={() => setIsSettingUp(true)} /> : <MeetingRoom />}</StreamTheme>
       </StreamCall>
     </section>
   );
