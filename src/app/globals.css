@@ -92,3 +92,10 @@
 ::-webkit-scrollbar-thumb {
   @apply bg-dark-1;
 }
+
+.cl-socialButtonsProviderIcon__github {
+  filter: invert(1);
+}
+.cl-socialButtonsIconButton {
+  @apply bg-dark-3;
+}

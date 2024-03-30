@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   keywords:
     "Ringo, ConnectSphere, virtual meeting, video conferencing, web application, online collaboration, video chat, business conference, educational webinar, screen sharing, remote work, virtual classroom, browser-based meeting.",
   description:
-    "Ringo is a leading-edge web application designed to bridge distances and bring people together. With crystal-clear video and audio, interactive collaboration tools, and seamless integration with your calendar, ConnectSphere makes virtual meetings effortless and engaging. Whether it's for business conferences, educational classes, or casual catch-ups, ConnectSphere delivers a reliable and immersive meeting experience directly from your browser.",
+    "Ringo is a leading-edge web application designed to bridge distances and bring people together. With crystal-clear video and audio, interactive collaboration tools, and seamless integration with your calendar, makes virtual meetings effortless and engaging. Whether it's for business conferences, educational classes, or casual catch-ups, delivers a reliable and immersive meeting experience directly from your browser. ",
 };
 
 export default function RootLayout({
