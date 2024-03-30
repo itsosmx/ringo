@@ -24,8 +24,9 @@ const config = {
       colors: {
         transparent: "transparent",
         dark: {
-          1: "#1C1F2E",
-          2: "#161925",
+          1: "#242247",
+          2: "#2E2C54",
+          3: "#393760"
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -33,7 +34,7 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "var(--primary)",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {

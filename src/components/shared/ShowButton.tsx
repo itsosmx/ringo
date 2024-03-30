@@ -1,3 +1,4 @@
+import { RandomColor, cn } from "@/lib/utils";
 import React from "react";
 
 interface ShowButtonProps extends React.HtmlHTMLAttributes<HTMLButtonElement> {
@@ -9,7 +10,8 @@ interface ShowButtonProps extends React.HtmlHTMLAttributes<HTMLButtonElement> {
 export default function ShowButton({ icon, title, description, ...props }: ShowButtonProps) {
   return (
     <button
-      className="bg-orange-400 p-4 h-[200px] w-[250px] rounded-2xl flex flex-col justify-between hover:scale-105 active:scale-95 transition-all"
+      style={{ backgroundColor: RandomColor() }}
+      className={cn("p-4 h-[200px] w-full rounded-2xl flex flex-col justify-between hover:brightness-95 transition-all")}
       {...props}>
       {icon}
       <div className="text-left">

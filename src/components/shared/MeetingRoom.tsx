@@ -1,4 +1,12 @@
-import { CallControls, CallStatsButton, PaginatedGridLayout, SpeakerLayout, CallParticipantsList } from "@stream-io/video-react-sdk";
+import {
+  CallControls,
+  CallStatsButton,
+  PaginatedGridLayout,
+  SpeakerLayout,
+  CallParticipantsList,
+  useCallStateHooks,
+  CallingState,
+} from "@stream-io/video-react-sdk";
 import React from "react";
 import {
   DropdownMenu,
@@ -10,11 +18,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { FaBoxes, FaUser } from "react-icons/fa";
 import { cn } from "@/lib/utils";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import EndCallButton from "./EndCallButton";
+import { Loader } from "..";
 
 export default function MeetingRoom() {
   const [layout, setLayout] = React.useState<LayoutProps>("speaker-left");
   const [showParticipants, setShowParticipants] = React.useState(false); // [1
+  const { useCallCallingState } = useCallStateHooks();
+  const callState = useCallCallingState();
 
   function CallLayout() {
     switch (layout) {
@@ -29,11 +40,22 @@ export default function MeetingRoom() {
     }
   }
 
+  if (callState != CallingState.JOINED) return <Loader />;
+
   return (
     <div className="h-screen w-full flex-center gap-4 relative">
-      <div className="size-full flex-center max-w-[1080px] relative">{CallLayout()}</div>
+      <div className="size-full flex-center max-w-[1080px] relative">
+        {CallLayout()}
 
-      <div className="flex gap-4 items-center fixed bottom-8">
+        <div
+          className={cn("h-screen hidden w-full max-w-[350px] ease-in fixed right-0 bg-dark-2 p-8", {
+            "animate-slide-in-block block": showParticipants,
+          })}>
+          <CallParticipantsList onClose={() => setShowParticipants(false)} />
+        </div>
+      </div>
+
+      <div className="flex gap-4 items-center fixed bottom-8 flex-wrap">
         <CallStatsButton />
         <CallControls />
         <DropdownMenu>
@@ -54,22 +76,12 @@ export default function MeetingRoom() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <Sheet>
-          <SheetTrigger
-            onClick={() => setShowParticipants((prev) => !prev)}
-            className="bg-dark-2 p-3 rounded-full hover:scale-105 active:scale-95 cursor-pointer">
-            <FaUser className="text-xl text-white" />
-          </SheetTrigger>
-          <SheetContent className="p-8">
-            <CallParticipantsList onClose={() => setShowParticipants(false)} />
-          </SheetContent>
-        </Sheet>
-
-        {/* <button
+        <button
           onClick={() => setShowParticipants((prev) => !prev)}
           className="bg-dark-2 p-3 rounded-full hover:scale-105 active:scale-95 cursor-pointer">
           <FaUser className="text-xl text-white" />
-        </button> */}
+        </button>
+        <EndCallButton />
       </div>
     </div>
   );

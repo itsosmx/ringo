@@ -7,9 +7,26 @@ export default function Navbar() {
     <header className="sticky h-16 flex items-center bg-dark-2">
       <div className="container flex justify-between">
         <Link className="font-bold text-2xl" href="/">
-          <h1>Zoom</h1>
+          <h1>
+            Ring
+            <span className="text-primary">O</span>
+          </h1>
         </Link>
-        <UserButton />
+        <UserButton
+          showName
+          appearance={{
+            elements: {
+              button: {
+                color: "white",
+                background: "#242247",
+              },
+            },
+            variables: {
+              colorText: "white",
+              colorBackground: "#2E2C54",
+            },
+          }}
+        />
       </div>
     </header>
   );
