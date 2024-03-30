@@ -11,6 +11,7 @@ import { BiSolidVideoRecording } from "react-icons/bi";
 import { FaSignInAlt } from "react-icons/fa";
 import { MdCreate } from "react-icons/md";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const client = useStreamVideoClient();
@@ -60,17 +61,33 @@ export default function Home() {
         </div>
         <Image src="/assets/hero.png" fill alt="hero" className="w-full object-cover brightness-50"></Image>
       </div>
-      <ShowButton icon={<MdCreate className="text-4xl" />} title="Create Meeting" description="Create meeting with your settings." />
+      <ShowButton icon={<MdCreate className="text-4xl" />} title="Create Meeting" description="Create meeting with your settings.">
+        <div className="flex-center flex-col gap-4">
+          <p className="font-bold text-lg">Still not developed. Please wait for the next update.</p>
+        </div>
+      </ShowButton>
       <section className="flex gap-4 justify-between">
-        <ShowButton onClick={createMeeting} icon={<FaPlus className="text-4xl" />} title="Instant Meeting" description="Start an instant meeting." />
-        <ShowButton
-          onClick={createMeeting}
-          icon={<FaSignInAlt className="text-4xl" />}
-          title="Join Meeting"
-          description="Join meeting via invitation link"
-        />
-        <ShowButton icon={<GrSchedule className="text-4xl" />} title="Schedule Meeting" description="Schedule a meeting." />
-        <ShowButton icon={<BiSolidVideoRecording className="text-4xl" />} title="View Recorded" description="View latest recorded meetings." />
+        <ShowButton icon={<FaPlus className="text-4xl" />} title="Instant Meeting" description="Start an instant meeting.">
+          <div className="flex-center flex-col gap-4">
+            <p className="font-bold text-lg">Create instant meeting.</p>
+            <Button onClick={createMeeting}>Create Meeting</Button>
+          </div>
+        </ShowButton>
+        <ShowButton icon={<FaSignInAlt className="text-4xl" />} title="Join Meeting" description="Join meeting via invitation link">
+          <div className="flex-center flex-col gap-4">
+            <p className="font-bold text-lg">Still not developed. Please wait for the next update.</p>
+          </div>
+        </ShowButton>
+        <ShowButton icon={<GrSchedule className="text-4xl" />} title="Schedule Meeting" description="Schedule a meeting.">
+          <div className="flex-center flex-col gap-4">
+            <p className="font-bold text-lg">Still not developed. Please wait for the next update.</p>
+          </div>
+        </ShowButton>
+        <ShowButton icon={<BiSolidVideoRecording className="text-4xl" />} title="View Recorded" description="View latest recorded meetings.">
+          <div className="flex-center flex-col gap-4">
+            <p className="font-bold text-lg">Still not developed. Please wait for the next update.</p>
+          </div>
+        </ShowButton>
       </section>
     </div>
   );

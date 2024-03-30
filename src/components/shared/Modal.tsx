@@ -10,8 +10,8 @@ interface ModalProps extends React.PropsWithChildren {
 export default function Modal({ open, onClose, children }: ModalProps) {
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogTrigger>Open</DialogTrigger>
-      <DialogContent className="bg-dark-1 text-white">{children}</DialogContent>
+      <DialogTrigger asChild>Open</DialogTrigger>
+      <DialogContent className="bg-dark-2 border-none text-white">{children}</DialogContent>
     </Dialog>
   );
 }
