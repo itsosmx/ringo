@@ -12,6 +12,8 @@ import { FaSignInAlt } from "react-icons/fa";
 import { MdCreate } from "react-icons/md";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import DatePicker from "react-datepicker";
 
 export default function Home() {
   const client = useStreamVideoClient();
@@ -26,7 +28,7 @@ export default function Home() {
   });
   const [meetingDetails, setMeetingDetails] = useState<Call>();
 
-  async function createMeeting() {
+  async function instantMeeting() {
     try {
       if (!client || !user) return;
       const id = crypto.randomUUID();
@@ -52,6 +54,10 @@ export default function Home() {
     }
   }
 
+  function createMeeting() {}
+  function joinMeeting() {}
+  function scheduleMeeting() {}
+
   return (
     <div className="flex flex-col gap-4">
       <div className="h-[350px] w-full relative rounded-2xl overflow-hidden">
@@ -61,16 +67,12 @@ export default function Home() {
         </div>
         <Image src="/assets/hero.png" fill alt="hero" className="w-full object-cover brightness-50"></Image>
       </div>
-      <ShowButton icon={<MdCreate className="text-4xl" />} title="Create Meeting" description="Create meeting with your settings.">
-        <div className="flex-center flex-col gap-4">
-          <p className="font-bold text-lg">Still not developed. Please wait for the next update.</p>
-        </div>
-      </ShowButton>
+      <ShowButton icon={<MdCreate className="text-4xl" />} title="Create Meeting" description="Create meeting with your settings."></ShowButton>
       <section className="flex gap-4 justify-between">
         <ShowButton icon={<FaPlus className="text-4xl" />} title="Instant Meeting" description="Start an instant meeting.">
           <div className="flex-center flex-col gap-4">
             <p className="font-bold text-lg">Create instant meeting.</p>
-            <Button onClick={createMeeting}>Create Meeting</Button>
+            <Button onClick={instantMeeting}>Start Meeting</Button>
           </div>
         </ShowButton>
         <ShowButton icon={<FaSignInAlt className="text-4xl" />} title="Join Meeting" description="Join meeting via invitation link">
@@ -79,8 +81,25 @@ export default function Home() {
           </div>
         </ShowButton>
         <ShowButton icon={<GrSchedule className="text-4xl" />} title="Schedule Meeting" description="Schedule a meeting.">
-          <div className="flex-center flex-col gap-4">
-            <p className="font-bold text-lg">Still not developed. Please wait for the next update.</p>
+          <div className="flex flex-col gap-4">
+            <p className="font-bold text-lg">Create Meeting</p>
+            <Textarea
+              className="bg-dark-3 border-none"
+              placeholder="Meeting Description"
+              value={meeting.description}
+              onChange={(e) => setMeeting((prev) => ({ ...prev, description: e.target.value }))}
+            />
+            <DatePicker
+              className="bg-dark-3 w-full p-2 rounded-lg focus:outline-none"
+              selected={meeting.date}
+              onChange={(date) => setMeeting((prev) => ({ ...prev, date }))}
+              showTimeSelect
+              timeIntervals={15}
+              timeFormat="HH:mm"
+              timeCaption="time"
+              dateFormat="MMMM d, yyyy h:mm aa"
+            />
+            <Button onClick={createMeeting}>Schedule Meeting</Button>
           </div>
         </ShowButton>
         <ShowButton icon={<BiSolidVideoRecording className="text-4xl" />} title="View Recorded" description="View latest recorded meetings.">

@@ -11,7 +11,7 @@ export default function Modal({ open, onClose, children }: ModalProps) {
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogTrigger asChild>Open</DialogTrigger>
-      <DialogContent className="bg-dark-2 border-none text-white">{children}</DialogContent>
+      <DialogContent className="bg-dark-1 border-none text-white">{children}</DialogContent>
     </Dialog>
   );
 }
