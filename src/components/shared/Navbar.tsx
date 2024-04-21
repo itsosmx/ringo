@@ -4,7 +4,7 @@ import { UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   return (
-    <header className="sticky h-16 flex items-center bg-dark-2">
+    <header className="sticky h-16 flex items-center">
       <div className="container flex justify-between">
         <Link className="font-bold text-2xl" href="/">
           <h1>

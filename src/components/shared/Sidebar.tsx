@@ -9,7 +9,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="bg-dark-2 container col-span-1">
+    <aside className="container col-span-1">
       <div className="flex flex-col gap-2 py-4">
         {routes.sidebar.map((route) => {
           const isActive = pathname === route.path || pathname.startsWith(`${route.path}/`);
